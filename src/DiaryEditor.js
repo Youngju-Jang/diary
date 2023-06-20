@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import styles from "./DiaryEditor.module.css";
 
-const DiaryEditor = () => {
+const DiaryEditor = ({ onCreate }) => {
   const [state, setState] = useState({ author: "", content: "", emotion: 1 });
   const { author, content, emotion } = state;
   const authorInput = useRef();
@@ -22,7 +22,13 @@ const DiaryEditor = () => {
       contentInput.current.focus();
       return;
     }
+    onCreate(author, content, emotion);
     alert("저장 성공!");
+    setState({
+      author: "",
+      content: "",
+      emotion: 1,
+    });
   };
 
   return (
