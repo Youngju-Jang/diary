@@ -49,8 +49,8 @@ const DiaryItem = ({ onEdit, onRemove, id, author, content, emotion, created_dat
       </div>
       {isEdit ? (
         <>
-          <button onClick={handleQuitEdit}>수정 취소</button>
-          <button onClick={handleEdit}>수정 완료</button>
+          <button onClick={handleQuitEdit}>수정취소</button>
+          <button onClick={handleEdit}>수정완료</button>
         </>
       ) : (
         <>
