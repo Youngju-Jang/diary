@@ -1,7 +1,10 @@
-import { useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./DiaryEditor.module.css";
 
 const DiaryEditor = ({ onCreate }) => {
+  useEffect(() => {
+    console.log("update");
+  });
   const [state, setState] = useState({ author: "", content: "", emotion: 1 });
   const { author, content, emotion } = state;
   const authorInput = useRef();
@@ -54,4 +57,4 @@ const DiaryEditor = ({ onCreate }) => {
   );
 };
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);
