@@ -42,14 +42,13 @@ function App() {
     setData((data) => [newItem, ...data]); // 함수형태로 보내기
   }, []);
 
-  const onRemove = (targetId) => {
-    const newDiaryList = data.filter((it) => it.id !== targetId);
-    setData(newDiaryList);
-  };
+  const onRemove = useCallback((targetId) => {
+    setData((data) => data.filter((it) => it.id !== targetId));
+  }, []);
 
-  const onEdit = (targetId, newContent) => {
-    setData(data.map((it) => (it.id === targetId ? { ...it, content: newContent } : it)));
-  };
+  const onEdit = useCallback((targetId, newContent) => {
+    setData((data) => data.map((it) => (it.id === targetId ? { ...it, content: newContent } : it)));
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
     if (data.length === 0) {
